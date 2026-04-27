@@ -1,0 +1,34 @@
+clinical_context:
+  specialty: "Clinical Microbiology / Infectious Diseases"
+  setting: "Admission Ward / Triage"
+  outcome_of_interest: "MDRO detection in urine culture"
+  why_matters: "Enables immediate precision empiric antibiotic therapy."
+
+problem_type:
+  problem_type: "binary"
+  label: "mdro_detected: yes/no"
+  reason: "Clinical choice is binary: Standard vs. Reserve antibiotics."
+
+features_available:
+  at_prediction_time: "At Admission / Initial Clerkship"
+  example_features: "age, prior_antibiotics_6m, recent_hospitalization_3m, indwelling_catheter"
+  data_source: "Patient interview and Electronic Health Records"
+
+temporal_framing:
+  prediction_timepoint: "At the moment of admission"
+  window: "48-72 hours (until lab confirmation)"
+  clinical_action: "Initiate reserve antibiotics or isolation precautions."
+
+leakage_check:
+  potential_leaks: "Final culture results, hospital discharge status"
+  example: "Don't use: Final sensitivity report (known only after 48h)."
+  decision: "REMOVE. Not available at the 3am prediction time."
+
+confounding_check:
+  suspected_confounders: "Patient Age"
+  example: "Age drives both catheter use and MDRO risk."
+  action: "Stratify by age groups to check independence."
+
+ml_appropriate:
+  is_ml_suitable: "YES"
+  reasoning: "Non-linear interactions between prior history and age are complex."
