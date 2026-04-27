@@ -1,0 +1,11 @@
+### DATA COLLECTION PLAN: MDRO PREDICTOR ###
+
+REQUIRED VARIABLES:
+1. Patient_Age (Numeric)
+2. Prior_Antibiotics_6m (Yes/No)
+3. Recent_Hospitalization_3m (Yes/No)
+4. Urinary_Catheter_Present (Yes/No)
+5. Prior_MDRO_History (Yes/No)
+
+TARGET VARIABLE:
+- Lab_Confirmed_MDRO (Yes/No) - This is what we are predicting.
